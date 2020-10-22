@@ -27,6 +27,7 @@ export class WishlistService {
   }
 
   removeFromWishlist(productId) {
+    console.log(productId)
     return this.http.delete(wishlistUrl + '/' + productId);
   }
 }

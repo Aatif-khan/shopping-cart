@@ -1,9 +1,9 @@
+import { Product } from './../models/product';
 import { CartItem } from 'src/app/models/cart-item';
 import { cartUrl } from './../config/api';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -41,6 +41,12 @@ export class CartService {
   }
 
   addProductToCart(product: Product): Observable<any>{
+    console.log("addProductTocart ",product.name)
     return this.http.post(cartUrl, { product });
+  }
+
+  removeProductToCart(product: Product): Observable<any>{
+    console.log("removeProductToCart "+ product)
+    return this.http.delete(cartUrl + '/' +product)
   }
 }
